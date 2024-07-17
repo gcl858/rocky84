@@ -1,0 +1,11 @@
+docker pull rockylinux:8.9
+docker run -it  rockylinux:8.9 /bin/bash
+
+docker pull rockylinux/rockylinux:8.4
+docker run -it  rockylinux/rockylinux:8.4 /bin/bash
+
+dnf install 'dnf-command(config-manager)'
+sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+dnf download docker-ce --resolve --downloaddir=./dockerce_packages
+tar -zcvf dockerce.tar.gz ./dockerce_packages
+split -b 25M -d -a 1 dockerce.tar.gz dockerce.tar.gz.
